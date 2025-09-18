@@ -51,14 +51,12 @@ export class AnalisadorLexico {
     while (!this._chegouAoFim()) {
       const proximoCaractere = this._olharProximoCaractere();
 
-      // Exemplo: Ignora os espaços antes de "int" em "  int"
       if (/\s/.test(proximoCaractere)) {
         this._avancarCaractere();
         continue;
       }
 
       // Requisito 8: Ignorar comentário de múltiplas linhas
-      // Exemplo: Ignora todo o bloco "/* ... */"
       if (
         proximoCaractere === "/" &&
         this.codigoFonte[this.posicaoAtual + 1] === "*"
@@ -82,7 +80,6 @@ export class AnalisadorLexico {
       }
 
       // Requisito 8: Ignorar comentário de linha única
-      // Exemplo: Ignora a linha "# Este é um comentário"
       if (proximoCaractere === "#") {
         this._avancarCaractere(); // Consome '#'
         while (
@@ -119,7 +116,6 @@ export class AnalisadorLexico {
     /**
      * Requisito 1: Identificadores
      * Regra: (a-z | A-Z | _)(a-z | A-Z | _ | 0-9)*
-     * Exemplo de código que processa: "var_1", "_valor", "soma"
      */
     const isLetra = (c) => (c >= "a" && c <= "z") || (c >= "A" && c <= "Z");
     if (isLetra(caractereAtual) || caractereAtual === "_") {
@@ -144,7 +140,6 @@ export class AnalisadorLexico {
     /**
      * Requisito 6: Constantes Numéricas
      * Regra: ((0-9)*.)?(0-9)+
-     * Exemplo de código que processa: "123", "45.67", ".5"
      */
     const isDigito = (c) => c >= "0" && c <= "9";
     if (isDigito(caractereAtual) || caractereAtual === ".") {
@@ -160,7 +155,6 @@ export class AnalisadorLexico {
         textoCompleto += this._avancarCaractere();
       }
       // Requisito 9: Tratamento de erros para números.
-      // Exemplo de erro: "15." ou "." sozinhos.
       if (textoCompleto.endsWith(".") || textoCompleto === ".") {
         console.error(
           `ERRO LÉXICO: Número inválido '${textoCompleto}' na Linha: ${linhaDoToken}, Coluna: ${colunaDoToken}`
@@ -175,7 +169,6 @@ export class AnalisadorLexico {
      * Verifica caracteres únicos ou duplos que formam operadores.
      */
     switch (caractereAtual) {
-      // Exemplo: "2 + 2" -> Gera um token OPERADOR_MATEMATICO para o "+"
       case "+":
         return new Token(TiposDeToken.OPERADOR_MATEMATICO, "+");
       case "-":
@@ -189,7 +182,6 @@ export class AnalisadorLexico {
       case ")":
         return new Token(TiposDeToken.PARENTESE_DIREITO, ")");
 
-      // Exemplo: "idade > 18" -> Processa ">". Se o próximo for "=", processa ">="
       case ">":
         if (this._olharProximoCaractere() === "=") {
           this._avancarCaractere(); // consome o "="
@@ -209,9 +201,8 @@ export class AnalisadorLexico {
           this._avancarCaractere();
           return new Token(TiposDeToken.OPERADOR_RELACIONAL, "!=");
         }
-        break; // Se for "!" sozinho, cai no erro default.
+        break; 
 
-      // Exemplo: "x = 10" -> Gera OPERADOR_ATRIBUICAO. "x == 10" -> Gera OPERADOR_RELACIONAL
       case "=":
         if (this._olharProximoCaractere() === "=") {
           this._avancarCaractere();
