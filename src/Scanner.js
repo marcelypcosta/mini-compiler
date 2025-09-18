@@ -62,7 +62,7 @@ export class AnalisadorLexico {
         this.codigoFonte[this.posicaoAtual + 1] === "*"
       ) {
         this._avancarCaractere();
-        this._avancarCaractere(); // Consome '/*'
+        this._avancarCaractere();
         while (
           !this._chegouAoFim() &&
           !(
@@ -74,7 +74,7 @@ export class AnalisadorLexico {
         }
         if (!this._chegouAoFim()) {
           this._avancarCaractere();
-          this._avancarCaractere(); // Consome '*/'
+          this._avancarCaractere(); 
         }
         continue; // Volta ao início do loop para continuar ignorando
       }
@@ -91,7 +91,6 @@ export class AnalisadorLexico {
         }
         continue;
       }
-      // Se não for espaço nem comentário, para a verificação.
       break;
     }
   }
@@ -111,7 +110,7 @@ export class AnalisadorLexico {
     // 3. Guarda a posição inicial para o caso de um erro.
     const linhaDoToken = this.linhaAtual;
     const colunaDoToken = this.colunaAtual;
-    let caractereAtual = this._avancarCaractere(); // Pega o primeiro caractere do novo token
+    let caractereAtual = this._avancarCaractere(); 
 
     /**
      * Requisito 1: Identificadores
@@ -120,7 +119,6 @@ export class AnalisadorLexico {
     const isLetra = (c) => (c >= "a" && c <= "z") || (c >= "A" && c <= "Z");
     if (isLetra(caractereAtual) || caractereAtual === "_") {
       let textoCompleto = caractereAtual;
-      // Continua consumindo caracteres enquanto forem letras, dígitos ou underscore.
       while (
         !this._chegouAoFim() &&
         (isLetra(this._olharProximoCaractere()) ||
@@ -145,7 +143,6 @@ export class AnalisadorLexico {
     if (isDigito(caractereAtual) || caractereAtual === ".") {
       let textoCompleto = caractereAtual;
       let temPontoDecimal = caractereAtual === ".";
-      // Continua consumindo caracteres enquanto forem dígitos, ou um único ponto decimal.
       while (
         !this._chegouAoFim() &&
         (isDigito(this._olharProximoCaractere()) ||
@@ -164,7 +161,6 @@ export class AnalisadorLexico {
 
       // Requisito 1: Varificação de identificador válido (válido: 'nota1' - inválido: '1nota')
       if (isLetra(this._olharProximoCaractere())) {
-        // Consome o resto da palavra para mostrar o erro completo
         while (
           !this._chegouAoFim() &&
           (isLetra(this._olharProximoCaractere()) ||
