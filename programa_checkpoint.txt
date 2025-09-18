@@ -1,0 +1,36 @@
+/*
+  Programa de Teste Completo para o Analisador Léxico.
+  Este código calcula a média ponderada de um aluno e verifica
+  se ele foi aprovado.
+*/
+
+float nota1 = 8.5
+float nota2 = 7.0
+
+float _peso1 = .4 
+float _peso2 = 0.6
+
+float media_final = (nota1 * _peso1) + (nota2 * _peso2)
+
+int nota_minima_aprovacao = 7
+
+print(media_final)
+
+if (media_final >= nota_minima_aprovacao) {
+  print("Aluno Aprovado!")
+} else {
+  print("Aluno Reprovado.")
+}
+
+int valor_teste = 100
+if (valor_teste == 100) {
+  print("O valor e 100.")
+}
+
+if (valor_teste != 50) {
+  print("O valor e diferente de 50.")
+}
+
+float erro_proposital = $
+
+int outro_erro = 25.

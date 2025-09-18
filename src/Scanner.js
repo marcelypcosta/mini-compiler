@@ -1,4 +1,4 @@
-import { TiposDeToken } from "./TiposDeToken.js";
+import { TiposDeToken } from "./TokenType.js";
 import { Token } from "./Token.js";
 
 /**
@@ -176,13 +176,19 @@ export class AnalisadorLexico {
      */
     switch (caractereAtual) {
       // Exemplo: "2 + 2" -> Gera um token OPERADOR_MATEMATICO para o "+"
-      case "+": return new Token(TiposDeToken.OPERADOR_MATEMATICO, "+");
-      case "-": return new Token(TiposDeToken.OPERADOR_MATEMATICO, "-");
-      case "*": return new Token(TiposDeToken.OPERADOR_MATEMATICO, "*");
-      case "/": return new Token(TiposDeToken.OPERADOR_MATEMATICO, "/");
-      case "(": return new Token(TiposDeToken.PARENTESE_ESQUERDO, "(");
-      case ")": return new Token(TiposDeToken.PARENTESE_DIREITO, ")");
-      
+      case "+":
+        return new Token(TiposDeToken.OPERADOR_MATEMATICO, "+");
+      case "-":
+        return new Token(TiposDeToken.OPERADOR_MATEMATICO, "-");
+      case "*":
+        return new Token(TiposDeToken.OPERADOR_MATEMATICO, "*");
+      case "/":
+        return new Token(TiposDeToken.OPERADOR_MATEMATICO, "/");
+      case "(":
+        return new Token(TiposDeToken.PARENTESE_ESQUERDO, "(");
+      case ")":
+        return new Token(TiposDeToken.PARENTESE_DIREITO, ")");
+
       // Exemplo: "idade > 18" -> Processa ">". Se o próximo for "=", processa ">="
       case ">":
         if (this._olharProximoCaractere() === "=") {
@@ -190,14 +196,14 @@ export class AnalisadorLexico {
           return new Token(TiposDeToken.OPERADOR_RELACIONAL, ">=");
         }
         return new Token(TiposDeToken.OPERADOR_RELACIONAL, ">");
-      
+
       case "<":
         if (this._olharProximoCaractere() === "=") {
           this._avancarCaractere();
           return new Token(TiposDeToken.OPERADOR_RELACIONAL, "<=");
         }
         return new Token(TiposDeToken.OPERADOR_RELACIONAL, "<");
-      
+
       case "!":
         if (this._olharProximoCaractere() === "=") {
           this._avancarCaractere();

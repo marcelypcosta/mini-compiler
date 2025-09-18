@@ -1,6 +1,6 @@
 import fs from "fs";
-import { AnalisadorLexico } from "./src/AnalisadorLexico.js";
-import { TiposDeToken } from "./src/TiposDeToken.js";
+import { AnalisadorLexico } from "./src/Scanner.js";
+import { TiposDeToken } from "./src/TokenType.js";
 
 /**
  * Função principal que executa o programa.
@@ -8,7 +8,7 @@ import { TiposDeToken } from "./src/TiposDeToken.js";
 function main() {
   try {
     // Carrega o conteúdo do arquivo de código-fonte de teste.
-    const codigoFonte = fs.readFileSync("codigo_fonte_teste.mc", "utf-8");
+    const codigoFonte = fs.readFileSync("programa_checkpoint.txt", "utf-8");
 
     // Cria uma nova instância do nosso analisador.
     const analisador = new AnalisadorLexico(codigoFonte);

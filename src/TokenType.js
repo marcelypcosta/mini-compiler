@@ -1,37 +1,36 @@
 /**
  * TiposDeToken.js
  *
- * Este arquivo exporta um objeto imutável que funciona como uma enumeração (enum)
- * para todas as categorias de tokens que nosso analisador léxico pode reconhecer.
- * Cada chave representa um tipo de token, conforme as regras do Ckp I.
+ * Este ficheiro exporta um objeto imutável que funciona como uma enumeração
+ * para todas as categorias de tokens que o nosso analisador pode reconhecer.
  */
 export const TiposDeToken = Object.freeze({
-    // == Requisito 7: Palavras Reservadas ==
+    // Palavras Reservadas
     PALAVRA_RESERVADA_INT: 'PALAVRA_RESERVADA_INT',
     PALAVRA_RESERVADA_FLOAT: 'PALAVRA_RESERVADA_FLOAT',
     PALAVRA_RESERVADA_PRINT: 'PALAVRA_RESERVADA_PRINT',
     PALAVRA_RESERVADA_IF: 'PALAVRA_RESERVADA_IF',
     PALAVRA_RESERVADA_ELSE: 'PALAVRA_RESERVADA_ELSE',
 
-    // == Requisito 1: Identificadores (nomes de variáveis, etc.) ==
+    // Identificadores (nomes de variáveis)
     IDENTIFICADOR: 'IDENTIFICADOR',
 
-    // == Requisito 6: Constantes Numéricas (inteiros e decimais) ==
+    // Números
     NUMERO: 'NUMERO',
 
-    // == Requisito 4: Operadores Relacionais (>, <, ==, etc.) ==
+    // Operadores Relacionais (>, <, ==, etc.)
     OPERADOR_RELACIONAL: 'OPERADOR_RELACIONAL',
 
-    // == Requisito 2: Operadores Matemáticos (+, -, *, /) ==
+    // Operadores Matemáticos (+, -, *, /)
     OPERADOR_MATEMATICO: 'OPERADOR_MATEMATICO',
 
-    // == Requisito 3: Operador de Atribuição (=) ==
+    // Operador de Atribuição (=)
     OPERADOR_ATRIBUICAO: 'OPERADOR_ATRIBUICAO',
 
-    // == Requisito 5: Parênteses ==
+    // Parênteses
     PARENTESE_ESQUERDO: 'PARENTESE_ESQUERDO',
     PARENTESE_DIREITO: 'PARENTESE_DIREITO',
 
-    // Token especial para indicar o Fim do Arquivo de código
+    // Fim do Arquivo
     FIM_DE_ARQUIVO: 'FIM_DE_ARQUIVO'
 });
