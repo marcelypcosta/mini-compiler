@@ -1,0 +1,12 @@
+{
+  "name": "mini-compiler-js",
+  "version": "1.0.0",
+  "description": "Analisador léxico em JavaScript",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
