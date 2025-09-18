@@ -2,6 +2,21 @@ import fs from "fs";
 import { AnalisadorLexico } from "./src/Scanner.js";
 import { TiposDeToken } from "./src/TokenType.js";
 
+/*
+ * ===============================================
+ * CONSTRUÇÃO DE COMPILADORES I
+ * ===============================================
+ *
+ * Nomes dos Integrantes do Grupo:
+ *
+ * - Marcely P. Costa
+ * - Renan Sena
+ * - Daniel Gutemberg
+ * - Kauã Vitor
+ *
+ * ===============================================
+ */
+
 /**
  * Função principal que executa o programa.
  */
