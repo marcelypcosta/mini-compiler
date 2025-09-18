@@ -4,7 +4,7 @@
   se ele foi aprovado.
 */
 
-float nota1 = 8.5
+float 1nota = 8.5
 float nota2 = 7.0
 
 float _peso1 = .4 

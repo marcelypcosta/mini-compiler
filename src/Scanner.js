@@ -161,6 +161,24 @@ export class AnalisadorLexico {
         );
         return null;
       }
+
+      // Requisito 1: Varificação de identificador válido (válido: 'nota1' - inválido: '1nota')
+      if (isLetra(this._olharProximoCaractere())) {
+        // Consome o resto da palavra para mostrar o erro completo
+        while (
+          !this._chegouAoFim() &&
+          (isLetra(this._olharProximoCaractere()) ||
+            isDigito(this._olharProximoCaractere()))
+        ) {
+          textoCompleto += this._avancarCaractere();
+        }
+        // Requisito 9: Tratamento de erros para identificadores.
+        console.error(
+          `ERRO LÉXICO: Identificador inválido '${textoCompleto}' na Linha: ${linhaDoToken}, Coluna: ${colunaDoToken}`
+        );
+        return null;
+      }
+
       return new Token(TiposDeToken.NUMERO, textoCompleto);
     }
 
@@ -201,7 +219,7 @@ export class AnalisadorLexico {
           this._avancarCaractere();
           return new Token(TiposDeToken.OPERADOR_RELACIONAL, "!=");
         }
-        break; 
+        break;
 
       case "=":
         if (this._olharProximoCaractere() === "=") {
